@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalCar : MonoBehaviour {
-    public static int CarTyp;
+    public static GlobalCar Instance;
+    public int CarTyp;
     public GameObject TrackWindow;
+ 
     public void redCar()
     {
         CarTyp = 1;
@@ -19,5 +21,13 @@ public class GlobalCar : MonoBehaviour {
     {
         CarTyp = 3;
         TrackWindow.SetActive(true);
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 }
